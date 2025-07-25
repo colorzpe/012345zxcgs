@@ -56,6 +56,9 @@ actions:
   # - !taskKill: {name: 'ShellExperienceHost'}
   # - !run: {exe: 'explorer.exe', runas: 'currentUser', wait: false}
 
+#DisableNoti Security
+    - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.SecurityAndMaintenance', value: 'Enabled', type: REG_DWORD, data: '0'}
+
 #ngen
   - !powerShell: {command: '.\ngen.ps1', exeDir: true, wait: true, runas: currentUserElevated}
 
@@ -76,6 +79,7 @@ actions:
   - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Microsoft Antimalware\Real-Time Protection', value: 'DisableOnAccessProtection', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection', value: 'DisableScanOnRealtimeEnable', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection', value: 'DisableBehaviorMonitoring', type: REG_DWORD, data: '1'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Security and Maintenance', value: 'DisableNotifications', type: REG_DWORD, data: '1'}
   - !registryKey: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\Sense', operation: delete}
   - !registryKey: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\WinDefend', operation: delete}
   - !registryKey: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\MsSecCore', operation: delete}
@@ -224,8 +228,8 @@ actions:
   - !registryValue: {path: 'HKCR\Microsoft.PowerShellScript.1\Shell\Edit\Command', value: '', type: REG_SZ, data: '"C:\Windows\System32\notepad.exe" "%1"'}
 
 #components
-  - !service: {name: 'wsearch', operation: change, startup: 4}
-  - !run: {exe: 'DISM.exe', args: '/Online /Disable-Feature /FeatureName:"SearchEngine-Client-Package" /NoRestart'}
+  # - !service: {name: 'wsearch', operation: change, startup: 4}
+  # - !run: {exe: 'DISM.exe', args: '/Online /Disable-Feature /FeatureName:"SearchEngine-Client-Package" /NoRestart'}
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\CI\Policy', value: 'VerifiedAndReputablePolicyState', type: REG_DWORD, data: '0'}
   - !writeStatus: {status: 'Configuring Features'}
   - !run: {exe: 'DISM.exe', args: '/Online /Enable-Feature /FeatureName:"DirectPlay" /NoRestart /All'}
@@ -346,44 +350,44 @@ actions:
 
   - !taskKill: {name: 'msteams*', ignoreErrors: true}
   - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Communications', value: 'ConfigureChatAutoInstall', data: '0', type: REG_DWORD}
-  - !appx: {name: '*NcsiUwpApp*', type: family}
-  - !appx: {name: 'Microsoft.AVCEncoderVideoExtension*', type: family}
-  - !appx: {name: 'Microsoft.AV1VideoExtension*', type: family}
-  - !appx: {name: 'MicrosoftWindows.UndockedDevKit*', type: family}
-  - !appx: {name: 'Microsoft.MPEG2VideoExtension*', type: family}
-  - !appx: {name: 'Microsoft.ApplicationCompatibilityEnhancements*', type: family}
-  - !appx: {name: 'Microsoft.Windows.StartMenuExperienceHost*', type: family}
-  - !appx: {name: 'Microsoft.HEIFImageExtension*', type: family}
-  - !appx: {name: 'Microsoft.HEVCVideoExtension*', type: family}
-  - !appx: {name: 'Microsoft.VP9VideoExtensions*', type: family}
+  # - !appx: {name: '*NcsiUwpApp*', type: family}
+  # - !appx: {name: 'Microsoft.AVCEncoderVideoExtension*', type: family}
+  # - !appx: {name: 'Microsoft.AV1VideoExtension*', type: family}
+  # - !appx: {name: 'MicrosoftWindows.UndockedDevKit*', type: family}
+  # - !appx: {name: 'Microsoft.MPEG2VideoExtension*', type: family}
+  # - !appx: {name: 'Microsoft.ApplicationCompatibilityEnhancements*', type: family}
+  # - !appx: {name: 'Microsoft.Windows.StartMenuExperienceHost*', type: family}
+  # - !appx: {name: 'Microsoft.HEIFImageExtension*', type: family}
+  # - !appx: {name: 'Microsoft.HEVCVideoExtension*', type: family}
+  # - !appx: {name: 'Microsoft.VP9VideoExtensions*', type: family}
   - !appx: {name: 'MicrosoftTeams*', type: family}
   - !appx: {name: 'MSTeams*', type: family}
   - !appx: {name: 'Clipchamp.Clipchamp*', type: family}
-  - !appx: {name: 'Microsoft.WindowsTerminal*', type: family}
-  - !appx: {name: 'MicrosoftWindows.LKG.AccountsService*', type: family}
-  - !appx: {name: 'MicrosoftWindows.LKG.RulesEngine*', type: family}
-  - !appx: {name: 'MicrosoftWindows.LKG.TwinSxS*', type: family}
-  - !appx: {name: 'MicrosoftWindows.LKG.Search*', type: family}
-  - !appx: {name: 'Microsoft.WebpImageExtension*', type: family}
-  - !appx: {name: 'Microsoft.WebMediaExtensions*', type: family}
-  - !appx: {name: 'Microsoft.RawImageExtension*', type: family}
-  - !appx: {name: 'Microsoft.HEIFImageExtension*', type: family}
-  - !appx: {name: '*WidgetsPlatformRuntime*', type: family}
-  - !appx: {name: '*MicrosoftWindows.LKG.DesktopSpotlight*', type: family}
-  - !appx: {name: 'Microsoft.Windows.AugLoop.CBS*', type: family}
-  - !appx: {name: '*MicrosoftWindows.LKG.IrisService*', type: family}
-  - !appx: {name: '*MicrosoftWindows.LKG.SpeechRuntime*', type: family}
+  # - !appx: {name: 'Microsoft.WindowsTerminal*', type: family}
+  # - !appx: {name: 'MicrosoftWindows.LKG.AccountsService*', type: family}
+  # - !appx: {name: 'MicrosoftWindows.LKG.RulesEngine*', type: family}
+  # - !appx: {name: 'MicrosoftWindows.LKG.TwinSxS*', type: family}
+  # - !appx: {name: 'MicrosoftWindows.LKG.Search*', type: family}
+  # - !appx: {name: 'Microsoft.WebpImageExtension*', type: family}
+  # - !appx: {name: 'Microsoft.WebMediaExtensions*', type: family}
+  # - !appx: {name: 'Microsoft.RawImageExtension*', type: family}
+  # - !appx: {name: 'Microsoft.HEIFImageExtension*', type: family}
+  # - !appx: {name: '*WidgetsPlatformRuntime*', type: family}
+  # - !appx: {name: '*MicrosoftWindows.LKG.DesktopSpotlight*', type: family}
+  # - !appx: {name: 'Microsoft.Windows.AugLoop.CBS*', type: family}
+  # - !appx: {name: '*MicrosoftWindows.LKG.IrisService*', type: family}
+  # - !appx: {name: '*MicrosoftWindows.LKG.SpeechRuntime*', type: family}
   - !appx: {name: '*ContentDeliveryManager*', type: family}
   - !appx: {name: '*Microsoft.ECApp*', type: family}
   - !appx: {name: '*Windows.CBSPreview*', type: family}
   - !appx: {name: '*Microsoft.Lockapp*', type: family}
-  - !appx: {name: '*Microsoft.BioEnrollment*', type: family}
+  # - !appx: {name: '*Microsoft.BioEnrollment*', type: family}
   - !appx: {name: '*c5e2524a-ea46-4f67-841f-6a9465d9d515*', type: family}
   - !appx: {name: '*F46D4000-FD22-4DB4-AC8E-4E1DDDE828FE*', type: family}
   - !appx: {name: '*Microsoft.Windows.SecureAssessmentBrowser*', type: family}
   - !appx: {name: '*Microsoft.Windows.AssignedAccessLockApp*', type: family}
   - !appx: {name: '*NarratorQuickStart*', type: family}
-  - !appx: {name: '*Microsoft.AsyncTextService*', type: family}
+  # - !appx: {name: '*Microsoft.AsyncTextService*', type: family}
   - !appx: {name: '*XGpuEjectDialog*', type: family}
   - !appx: {name: '*PeopleExperienceHost*', type: family}
   - !appx: {name: '*MicrosoftWindows.Client.AIX*', type: family}
@@ -425,8 +429,8 @@ actions:
   - !appx: {name: 'Microsoft.WindowsMaps*', type: family}
   - !appx: {name: 'Microsoft.WindowsSoundRecorder*', type: family}
   - !appx: {name: 'Microsoft.*MicrosoftWindows.Client.AIX*', type: family}
-  - !appx: {name: '*CortanaUI*', type : app}
-  - !appx: {name: '*CortanaUIFullTrustApp*', type : app}
+  # - !appx: {name: '*CortanaUI*', type : app}
+  # - !appx: {name: '*CortanaUIFullTrustApp*', type : app}
   - !appx: {name: '*WindowsBackup*', type: app}
   - !appx: {name: '*DesktopSpotlight*', type: app}
   - !appx: {name: '*IrisService*', type: app}
@@ -444,8 +448,8 @@ actions:
   - !appx: {name: '*Global.MicrosoftGraphRecentItemsManager*', type : app}
   - !appx: {name: '*Global.PersonaCardManager*', type : app}
   - !appx: {name: '*Global.RulesEngine*', type : app}
-  - !appx: {name: '*MiniSearchUI*', type : app}
-  - !appx: {name: '*FESearchUI*', type : app}
+  # - !appx: {name: '*MiniSearchUI*', type : app}
+  # - !appx: {name: '*FESearchUI*', type : app}
   - !appx: {name: '*Global.SpeechSynthesizerExtension*', type : app}
   - !appx: {name: '*Global.ValueBanner*', type : app}
   - !appx: {name: '*Global.WindowsPeopleExperience*', type : app}
@@ -576,9 +580,9 @@ actions:
   - !run: {exe: 'bcdedit', args: '/set disabledynamictick yes'}
   - !run: {exe: 'bcdedit', args: '/deletevalue useplatformclock'}
   - !run: {exe: 'bcdedit', args: '/deletevalue useplatformtick'}
-  - !run: {exe: 'bcdedit', args: '/set {current} nx optin'}
+  # - !run: {exe: 'bcdedit', args: '/set {current} nx optin'}
   - !run: {exe: 'bcdedit', args: '/set {current} recoveryenabled no'}
-  - !run: {exe: 'bcdedit', args: '/set {current} disableelamdrivers yes'}
+  # - !run: {exe: 'bcdedit', args: '/set {current} disableelamdrivers yes'}
   - !run: {exe: 'bcdedit', args: '/set {current} integrityservices disable'}
   - !run: {exe: 'powercfg', args: '-h off'}
   - !run: {exe: 'label', args: '%systemdrive% vain'}
@@ -616,15 +620,15 @@ actions:
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling', value: 'PowerThrottlingOff', type: REG_DWORD, data: '1'}
 
 #session manager
-  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel', value: 'DisableExceptionChainValidation', type: REG_DWORD, data: '1'}
-  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel', value: 'DisableControlFlowGuardXfg', type: REG_DWORD, data: '1'}
-  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel', value: 'DisableControlFlowGuardExportSuppression', type: REG_DWORD, data: '1'}
-  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel', value: 'AlwaysTrackIoBoosting', type: REG_DWORD, data: '0'}
-  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel', value: 'ForceBugcheckForDpcWatchdog', type: REG_DWORD, data: '0'}
-  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel', value: 'EnableWerUserReporting', type: REG_DWORD, data: '0'}
-  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel', value: 'SeLpacEnableWatsonReporting', type: REG_DWORD, data: '0'}
-  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel', value: 'SerializeTimerExpiration', type: REG_DWORD, data: '1'}
-  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel', value: 'DriveRemappingMitigation', type: REG_DWORD, data: '0'}
+  # - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel', value: 'DisableExceptionChainValidation', type: REG_DWORD, data: '1'}
+  # - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel', value: 'DisableControlFlowGuardXfg', type: REG_DWORD, data: '1'}
+  # - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel', value: 'DisableControlFlowGuardExportSuppression', type: REG_DWORD, data: '1'}
+  # - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel', value: 'AlwaysTrackIoBoosting', type: REG_DWORD, data: '0'}
+  # - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel', value: 'ForceBugcheckForDpcWatchdog', type: REG_DWORD, data: '0'}
+  # - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel', value: 'EnableWerUserReporting', type: REG_DWORD, data: '0'}
+  # - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel', value: 'SeLpacEnableWatsonReporting', type: REG_DWORD, data: '0'}
+  # - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel', value: 'SerializeTimerExpiration', type: REG_DWORD, data: '1'}
+  # - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel', value: 'DriveRemappingMitigation', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Configuration Manager', value: 'SelfHealingEnabled', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Configuration Manager', value: 'VirtualizationEnabled', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Configuration Manager', value: 'FastBoot', type: REG_DWORD, data: '0'}
@@ -1170,12 +1174,12 @@ actions:
   - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'SharingWizardOn', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ImmersiveShell', value: 'SignInMode', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Chat', value: 'ChatIcon', type: REG_DWORD, data: '3'}
-  - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'TaskbarMn', type: REG_DWORD, data: '0'}
+  # - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'TaskbarMn', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings', value: 'TaskbarEndTask', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer', value: 'HideSCAMeetNow', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MultiTaskingView\AllUpView', value: 'Enabled', operation: delete}
   - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'ShowTaskViewButton', type: REG_DWORD, data: '0'}
-  - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'TaskbarAl', type: REG_DWORD, data: '0'}
+  # - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'TaskbarAl', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband', value: 'Favorites', operation: delete}
   - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager', value: 'EnthusiastMode', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell', value: 'FolderType', operation: delete}
@@ -1319,7 +1323,7 @@ actions:
   - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\DWM', value: 'AlwaysHibernateThumbnails', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize', value: 'EnableTransparency', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKCU\Control Panel\Desktop', value: 'ForegroundLockTimeout', type: REG_DWORD, data: '0'}
-  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer', value: 'SettingsPageVisibility', type: REG_SZ, data: 'hide:home;windowsupdate;privacy-automaticfiledownloads;privacy-feedback;windowsinsider;deviceusage;maps;otherusers;findmydevice;windowsdefender;quiethours;powersleep;batterysaver;batterysaver-settings;storagesense;storagepolicies;savelocations;project;crossdevice;mobile-devices;network-dialup;videoplayback;search-permissions;cortana-windowssearch;privacy-speech;privacy-speechtyping;privacy-activityhistory;recovery;troubleshoot;privacy-general;pen;personalization-textinput'} 
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer', value: 'SettingsPageVisibility', type: REG_SZ, data: 'hide:home;windowsupdate;privacy-automaticfiledownloads;privacy-feedback;windowsinsider;deviceusage;maps;otherusers;findmydevice;windowsdefender;quiethours;powersleep;batterysaver;batterysaver-settings;storagesense;storagepolicies;savelocations;project;crossdevice;mobile-devices;network-dialup;videoplayback;privacy-speech;privacy-activityhistory;recovery;troubleshoot;privacy-general;pen'} 
   - !taskKill: {name: 'explorer'}
   - !run: {exe: 'explorer.exe', runas: 'currentUser', wait: false}
   - !registryValue: {path: 'HKCU\Control Panel\Desktop', value: 'JPEGImportQuality', type: REG_DWORD, data: '100'}
