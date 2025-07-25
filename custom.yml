@@ -56,9 +56,6 @@ actions:
   # - !taskKill: {name: 'ShellExperienceHost'}
   # - !run: {exe: 'explorer.exe', runas: 'currentUser', wait: false}
 
-#DisableNoti Security
-    - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.SecurityAndMaintenance', value: 'Enabled', type: REG_DWORD, data: '0'}
-
 #ngen
   - !powerShell: {command: '.\ngen.ps1', exeDir: true, wait: true, runas: currentUserElevated}
 
@@ -79,7 +76,6 @@ actions:
   - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Microsoft Antimalware\Real-Time Protection', value: 'DisableOnAccessProtection', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection', value: 'DisableScanOnRealtimeEnable', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection', value: 'DisableBehaviorMonitoring', type: REG_DWORD, data: '1'}
-  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Security and Maintenance', value: 'DisableNotifications', type: REG_DWORD, data: '1'}
   - !registryKey: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\Sense', operation: delete}
   - !registryKey: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\WinDefend', operation: delete}
   - !registryKey: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\MsSecCore', operation: delete}
