@@ -250,6 +250,7 @@ actions:
   - !service: {name: "edgeupdatem", operation: delete}
   - !service: {name: "MicrosoftEdgeElevationService", operation: delete}
   - !file: {path: '%SystemDrive%\Users\Public\Desktop\Microsoft Edge.lnk'}
+  - !file: {path: '%SystemDrive%\Users\%USERNAME%\Desktop\Microsoft Edge.lnk'}  
   - !file: {path: '%ProgramData%\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk'}
   - !file: {path: '%windir%\system32\MicrosoftEdgeBCHost.exe'}
   - !file: {path: '%windir%\system32\MicrosoftEdgeCP.exe'}
@@ -313,6 +314,7 @@ actions:
     path: "%ProgramW6432%\\Internet Explorer"
   - !systemPackage: {name: 'Microsoft-Windows-Internet-Browser-Deployment', arch: amd64, language: 'neutral'}
   - !file: {path: '%SYSTEMDRIVE%\Users\Public\Desktop\Microsoft Edge.lnk'}
+  - !file: {path: '%SYSTEMDRIVE%\Users\%USERNAME%\Desktop\Microsoft Edge.lnk'}
   - !file: {path: "%ProgramFiles(x86)%\\Microsoft\\Edge"}
   - !file: {path: "%ProgramFiles(x86)%\\Microsoft\\EdgeUpdate"}
   - !file: {path: "%ProgramFiles(x86)%\\Microsoft\\EdgeCore"}
@@ -581,7 +583,7 @@ actions:
   # - !run: {exe: 'bcdedit', args: '/set {current} disableelamdrivers yes'}
   - !run: {exe: 'bcdedit', args: '/set {current} integrityservices disable'}
   - !run: {exe: 'powercfg', args: '-h off'}
-  - !run: {exe: 'label', args: '%systemdrive% vain'}
+  # - !run: {exe: 'label', args: '%systemdrive% vain'}
 
 #
   - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows', value: 'RITdemonTimerPowerSaveElapse', type: REG_DWORD, data: '0'}
@@ -1251,8 +1253,9 @@ actions:
   - !registryValue: {path: 'HKCR\Directory\shell\runas\command', value: '', type: REG_SZ, data: 'cmd.exe /c takeown /f %1 /r /d y && icacls %1 /grant administrators:F'}
   - !registryValue: {path: 'HKCR\Directory\shell\runas\command', value: 'IsolatedCommand', type: REG_SZ, data: 'cmd.exe /c takeown /f %1 /r /d y && icacls %1 /grant administrators:F'}
   - !cmd: {command: '"reg import runasti.reg', exeDir: true, wait: true, runas: currentUserElevated}
-  - !registryKey: {path: 'HKCR\AllFilesystemObjects\shellex\ContextMenuHandlers\SendTo'}
-  - !registryKey: {path: 'HKCR\UserLibraryFolder\shellex\ContextMenuHandlers\SendTo'}
+#Sendto
+  # - !registryKey: {path: 'HKCR\AllFilesystemObjects\shellex\ContextMenuHandlers\SendTo'}
+  # - !registryKey: {path: 'HKCR\UserLibraryFolder\shellex\ContextMenuHandlers\SendTo'}
   - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked', value: '{7AD84985-87B4-4a16-BE58-8B72A5B390F7}', type: REG_SZ, data: ''}
   - !registryKey: {path: 'HKCR\CompressedFolder\ShellEx\ContextMenuHandlers\{b8cdcb65-b1bf-4b42-9428-1dfdb7ee92af}'}
   - !registryKey: {path: 'HKCR\SystemFileAssociations\.zip\ShellEx\ContextMenuHandlers\{b8cdcb65-b1bf-4b42-9428-1dfdb7ee92af}'}
