@@ -1417,6 +1417,9 @@ actions:
   - !run: {exe: 'lodctr', args: '/r'}
   - !run: {exe: 'winmgmt', args: '/resyncperf'}
 
+  #disable print screen for snipping tool
+  - !registryValue: {path: 'HKCU\Control Panel\Keyboard', value: 'PrintScreenKeyForSnippingEnabled', type: REG_DWORD, data: '0'}
+
   #zip / openshell
   # - !cmd: {command: '"configurezipopenshell.bat"', exeDir: true, wait: true, runas: currentUserElevated}
 
