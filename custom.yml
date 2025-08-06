@@ -42,19 +42,19 @@ actions:
   - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging', value: 'EnableScriptBlockInvocationLogging', type: REG_SZ, data: ''}
 
 #notifications
-  - !service: {name: 'WpnService', operation: change, startup: 4}
-  - !service: {name: "WpnService", operation: stop}
-  - !taskKill: {name: 'explorer'}
-  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener', value: 'Value', type: REG_SZ, data: 'Deny'}
-  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\PushNotifications', value: 'ToastEnabled', type: REG_DWORD, data: '0'}
-  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications', value: 'NoCloudApplicationNotification', type: REG_DWORD, data: '1'}
-  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'ShowSyncProviderNotifications', type: REG_DWORD, data: '0'}
-  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings', value: 'NOC_GLOBAL_SETTING_ALLOW_NOTIFICATION_SOUND', type: REG_DWORD, data: '0'}
-  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings', value: 'NOC_GLOBAL_SETTING_ALLOW_CRITICAL_TOASTS_ABOVE_LOCK', type: REG_DWORD, data: '0'}
-  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings', value: 'NOC_GLOBAL_SETTING_ALLOW_TOASTS_ABOVE_LOCK', type: REG_DWORD, data: '0'}
-  - !taskKill: {name: 'SystemSettings'}
-  - !taskKill: {name: 'ShellExperienceHost'}
-  - !run: {exe: 'explorer.exe', runas: 'currentUser', wait: false}
+  # - !service: {name: 'WpnService', operation: change, startup: 4}
+  # - !service: {name: "WpnService", operation: stop}
+  # - !taskKill: {name: 'explorer'}
+  # - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener', value: 'Value', type: REG_SZ, data: 'Deny'}
+  # - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\PushNotifications', value: 'ToastEnabled', type: REG_DWORD, data: '0'}
+  # - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications', value: 'NoCloudApplicationNotification', type: REG_DWORD, data: '1'}
+  # - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'ShowSyncProviderNotifications', type: REG_DWORD, data: '0'}
+  # - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings', value: 'NOC_GLOBAL_SETTING_ALLOW_NOTIFICATION_SOUND', type: REG_DWORD, data: '0'}
+  # - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings', value: 'NOC_GLOBAL_SETTING_ALLOW_CRITICAL_TOASTS_ABOVE_LOCK', type: REG_DWORD, data: '0'}
+  # - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings', value: 'NOC_GLOBAL_SETTING_ALLOW_TOASTS_ABOVE_LOCK', type: REG_DWORD, data: '0'}
+  # - !taskKill: {name: 'SystemSettings'}
+  # - !taskKill: {name: 'ShellExperienceHost'}
+  # - !run: {exe: 'explorer.exe', runas: 'currentUser', wait: false}
 
 #ngen
   - !powerShell: {command: '.\ngen.ps1', exeDir: true, wait: true, runas: currentUserElevated}
@@ -135,11 +135,11 @@ actions:
   - !run: {exe: 'DISM.exe', args: '/Online /Disable-Feature /FeatureName:"Windows-Defender-Default-Definitions" /NoRestart'}
 
   #uac
-  - !service: {name: 'luafv', operation: change, startup: 4}
-  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'EnableLUA', type:  REG_DWORD, data: '0'}
-  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'PromptOnSecureDesktop', type:  REG_DWORD, data: '0'}
-  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'ConsentPromptBehaviorAdmin', type:  REG_DWORD, data: '0'}
-  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'ValidateAdminCodeSignatures', type:  REG_DWORD, data: '0'}
+  # - !service: {name: 'luafv', operation: change, startup: 4}
+  # - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'EnableLUA', type:  REG_DWORD, data: '0'}
+  # - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'PromptOnSecureDesktop', type:  REG_DWORD, data: '0'}
+  # - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'ConsentPromptBehaviorAdmin', type:  REG_DWORD, data: '0'}
+  # - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'ValidateAdminCodeSignatures', type:  REG_DWORD, data: '0'}
 
   #wallpaper
   - !powerShell: {command: '.\WALLPAPER.ps1 -Mode Desktop -ImagePath $env:systemroot\Web\Wallpaper\Vain\img0.jpg', exeDir: true, runas: currentUserElevated}
