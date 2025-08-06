@@ -42,19 +42,19 @@ actions:
   - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging', value: 'EnableScriptBlockInvocationLogging', type: REG_SZ, data: ''}
 
 #notifications
-  # - !service: {name: 'WpnService', operation: change, startup: 4}
-  # - !service: {name: "WpnService", operation: stop}
-  # - !taskKill: {name: 'explorer'}
-  # - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener', value: 'Value', type: REG_SZ, data: 'Deny'}
-  # - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\PushNotifications', value: 'ToastEnabled', type: REG_DWORD, data: '0'}
-  # - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications', value: 'NoCloudApplicationNotification', type: REG_DWORD, data: '1'}
-  # - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'ShowSyncProviderNotifications', type: REG_DWORD, data: '0'}
-  # - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings', value: 'NOC_GLOBAL_SETTING_ALLOW_NOTIFICATION_SOUND', type: REG_DWORD, data: '0'}
-  # - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings', value: 'NOC_GLOBAL_SETTING_ALLOW_CRITICAL_TOASTS_ABOVE_LOCK', type: REG_DWORD, data: '0'}
-  # - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings', value: 'NOC_GLOBAL_SETTING_ALLOW_TOASTS_ABOVE_LOCK', type: REG_DWORD, data: '0'}
-  # - !taskKill: {name: 'SystemSettings'}
-  # - !taskKill: {name: 'ShellExperienceHost'}
-  # - !run: {exe: 'explorer.exe', runas: 'currentUser', wait: false}
+  - !service: {name: 'WpnService', operation: change, startup: 4}
+  - !service: {name: "WpnService", operation: stop}
+  - !taskKill: {name: 'explorer'}
+  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\userNotificationListener', value: 'Value', type: REG_SZ, data: 'Deny'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\PushNotifications', value: 'ToastEnabled', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications', value: 'NoCloudApplicationNotification', type: REG_DWORD, data: '1'}
+  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'ShowSyncProviderNotifications', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings', value: 'NOC_GLOBAL_SETTING_ALLOW_NOTIFICATION_SOUND', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings', value: 'NOC_GLOBAL_SETTING_ALLOW_CRITICAL_TOASTS_ABOVE_LOCK', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings', value: 'NOC_GLOBAL_SETTING_ALLOW_TOASTS_ABOVE_LOCK', type: REG_DWORD, data: '0'}
+  - !taskKill: {name: 'SystemSettings'}
+  - !taskKill: {name: 'ShellExperienceHost'}
+  - !run: {exe: 'explorer.exe', runas: 'currentUser', wait: false}
 
 #ngen
   - !powerShell: {command: '.\ngen.ps1', exeDir: true, wait: true, runas: currentUserElevated}
@@ -135,11 +135,11 @@ actions:
   - !run: {exe: 'DISM.exe', args: '/Online /Disable-Feature /FeatureName:"Windows-Defender-Default-Definitions" /NoRestart'}
 
   #uac
-  # - !service: {name: 'luafv', operation: change, startup: 4}
-  # - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'EnableLUA', type:  REG_DWORD, data: '0'}
-  # - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'PromptOnSecureDesktop', type:  REG_DWORD, data: '0'}
-  # - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'ConsentPromptBehaviorAdmin', type:  REG_DWORD, data: '0'}
-  # - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'ValidateAdminCodeSignatures', type:  REG_DWORD, data: '0'}
+  - !service: {name: 'luafv', operation: change, startup: 4}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'EnableLUA', type:  REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'PromptOnSecureDesktop', type:  REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'ConsentPromptBehaviorAdmin', type:  REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'ValidateAdminCodeSignatures', type:  REG_DWORD, data: '0'}
 
   #wallpaper
   - !powerShell: {command: '.\WALLPAPER.ps1 -Mode Desktop -ImagePath $env:systemroot\Web\Wallpaper\Vain\img0.jpg', exeDir: true, runas: currentUserElevated}
@@ -224,8 +224,8 @@ actions:
   - !registryValue: {path: 'HKCR\Microsoft.PowerShellScript.1\Shell\Edit\Command', value: '', type: REG_SZ, data: '"C:\Windows\System32\notepad.exe" "%1"'}
 
 #components
-  # - !service: {name: 'wsearch', operation: change, startup: 4}
-  # - !run: {exe: 'DISM.exe', args: '/Online /Disable-Feature /FeatureName:"SearchEngine-Client-Package" /NoRestart'}
+  - !service: {name: 'wsearch', operation: change, startup: 4}
+  - !run: {exe: 'DISM.exe', args: '/Online /Disable-Feature /FeatureName:"SearchEngine-Client-Package" /NoRestart'}
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\CI\Policy', value: 'VerifiedAndReputablePolicyState', type: REG_DWORD, data: '0'}
   - !writeStatus: {status: 'Configuring Features'}
   - !run: {exe: 'DISM.exe', args: '/Online /Enable-Feature /FeatureName:"DirectPlay" /NoRestart /All'}
@@ -368,9 +368,9 @@ actions:
   # - !appx: {name: 'Microsoft.WebMediaExtensions*', type: family}
   # - !appx: {name: 'Microsoft.RawImageExtension*', type: family}
   # - !appx: {name: 'Microsoft.HEIFImageExtension*', type: family}
-  # - !appx: {name: '*WidgetsPlatformRuntime*', type: family}
+  - !appx: {name: '*WidgetsPlatformRuntime*', type: family}
   # - !appx: {name: '*MicrosoftWindows.LKG.DesktopSpotlight*', type: family}
-  # - !appx: {name: 'Microsoft.Windows.AugLoop.CBS*', type: family}
+  - !appx: {name: 'Microsoft.Windows.AugLoop.CBS*', type: family}
   # - !appx: {name: '*MicrosoftWindows.LKG.IrisService*', type: family}
   # - !appx: {name: '*MicrosoftWindows.LKG.SpeechRuntime*', type: family}
   - !appx: {name: '*ContentDeliveryManager*', type: family}
@@ -426,7 +426,7 @@ actions:
   - !appx: {name: 'Microsoft.WindowsSoundRecorder*', type: family}
   - !appx: {name: 'Microsoft.*MicrosoftWindows.Client.AIX*', type: family}
   # - !appx: {name: '*CortanaUI*', type : app}
-  # - !appx: {name: '*CortanaUIFullTrustApp*', type : app}
+  - !appx: {name: '*CortanaUIFullTrustApp*', type : app}
   - !appx: {name: '*WindowsBackup*', type: app}
   - !appx: {name: '*DesktopSpotlight*', type: app}
   - !appx: {name: '*IrisService*', type: app}
@@ -692,10 +692,6 @@ actions:
     exeDir: true
     wait: true
   - !run: {exe: 'taskkill', args: '/im mobsync.exe /f '}
-
-#disablereservedstorage
-  - !run: {exe: 'DISM.exe', args: '/Online /Set-ReservedStorageState /State:Disabled'}
-  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager', value: '0', type: REG_DWORD, data: '0'}
 
 #disablescheduledtasks
   - !scheduledTask: {path: '\Microsoft\Windows\Sysmain\ResPriStaticDbSync', operation: disable}
@@ -1142,7 +1138,7 @@ actions:
   - !registryValue: {path: 'HKCU\Control Panel\Desktop', value: 'AutoEndTasks', type: REG_SZ, data: '1'}
   - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Multimedia\Audio\DeviceCpl', value: 'ShowDisconnectedDevices', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Multimedia\Audio\DeviceCpl', value: 'ShowHiddenDevices', type: REG_DWORD, data: '0'}
-  - !file: {path: '%windir%\SystemResources\Windows.UI.TaskManager'}
+  # - !file: {path: '%windir%\SystemResources\Windows.UI.TaskManager'}
   - !registryValue: {path: 'HKCU\Software\Classes\CLSID\{2aa9162e-c906-4dd9-ad0b-3d24a8eef5a0}', value: '', type: REG_SZ, data: 'CLSID_ItemsViewAdapter'}
   - !registryValue: {path: 'HKCU\Software\Classes\CLSID\{2aa9162e-c906-4dd9-ad0b-3d24a8eef5a0}\InProcServer32', value: '', type: REG_SZ, data: 'C:\Windows\System32\Windows.UI.FileExplorer.dll_'}
   - !registryValue: {path: 'HKCU\Software\Classes\CLSID\{2aa9162e-c906-4dd9-ad0b-3d24a8eef5a0}\InProcServer32', value: 'ThreadingModel', type: REG_SZ, data: 'Apartment'}
@@ -1170,12 +1166,12 @@ actions:
   - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'SharingWizardOn', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ImmersiveShell', value: 'SignInMode', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Chat', value: 'ChatIcon', type: REG_DWORD, data: '3'}
-  # - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'TaskbarMn', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'TaskbarMn', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings', value: 'TaskbarEndTask', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer', value: 'HideSCAMeetNow', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MultiTaskingView\AllUpView', value: 'Enabled', operation: delete}
   - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'ShowTaskViewButton', type: REG_DWORD, data: '0'}
-  # - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'TaskbarAl', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'TaskbarAl', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband', value: 'Favorites', operation: delete}
   - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager', value: 'EnthusiastMode', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell', value: 'FolderType', operation: delete}
@@ -1319,7 +1315,9 @@ actions:
   - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\DWM', value: 'AlwaysHibernateThumbnails', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize', value: 'EnableTransparency', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKCU\Control Panel\Desktop', value: 'ForegroundLockTimeout', type: REG_DWORD, data: '0'}
+#Setting
   - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer', value: 'SettingsPageVisibility', type: REG_SZ, data: 'hide:home;windowsupdate;privacy-automaticfiledownloads;privacy-feedback;windowsinsider;deviceusage;maps;otherusers;findmydevice;windowsdefender;quiethours;powersleep;batterysaver;batterysaver-settings;storagesense;storagepolicies;savelocations;project;crossdevice;mobile-devices;network-dialup;videoplayback;privacy-speech;privacy-activityhistory;recovery;troubleshoot;privacy-general;pen'} 
+#Setting
   - !taskKill: {name: 'explorer'}
   - !run: {exe: 'explorer.exe', runas: 'currentUser', wait: false}
   - !registryValue: {path: 'HKCU\Control Panel\Desktop', value: 'JPEGImportQuality', type: REG_DWORD, data: '100'}
@@ -1374,7 +1372,7 @@ actions:
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Lsa', value: 'RunAsPPL', type: REG_DWORD, data: '0'}
 
   #nic
-  - !cmd: {command: '"nic.bat"', exeDir: true, wait: true}
+  # - !cmd: {command: '"nic.bat"', exeDir: true, wait: true}
 
   #associations
   - !powerShell: {command: '.\SetFileTypeAssociation.ps1', exeDir: true, wait: true, runas: currentuser}
@@ -1405,11 +1403,11 @@ actions:
   - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Speech', value: 'AllowSpeechModelUpdate', type: REG_DWORD, data: '0'}
 
   #oem
-  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation', value: 'Manufacturer', type: REG_SZ, data: 'flash'}
-  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation', value: 'Model', type: REG_SZ, data: 'vain'}
+  # - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation', value: 'Manufacturer', type: REG_SZ, data: 'flash'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation', value: 'Model', type: REG_SZ, data: 'Va1n'}
   - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation', value: 'SupportURL', type: REG_SZ, data: 'https://dsc.gg/vainn'}
-  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion', value: 'EditionSubVersion', type: REG_SZ, data: 'vain'}
-  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion', value: 'RegisteredOrganization', type: REG_SZ, data: 'vain'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion', value: 'EditionSubVersion', type: REG_SZ, data: 'Va1n'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion', value: 'RegisteredOrganization', type: REG_SZ, data: 'Va1n'}
 
   #rebuildperfcounters
   - !run: {exe: 'lodctr', args: '/r'}
@@ -1419,8 +1417,8 @@ actions:
   #zip / openshell
   # - !cmd: {command: '"configurezipopenshell.bat"', exeDir: true, wait: true, runas: currentUserElevated}
 
-  # - !writeStatus: {status: 'Creating services backup 2/2'}
-  # - !powerShell: {command: '.\BACKUP.ps1 -FilePath """$([Environment]::GetFolderPath(''Windows''))\ServicesBackup\vainServices.reg"""', wait: true, exeDir: true}
+  - !writeStatus: {status: 'Creating services backup 2/2'}
+  - !powerShell: {command: '.\BACKUP.ps1 -FilePath """$([Environment]::GetFolderPath(''Windows''))\ServicesBackup\vainServices.reg"""', wait: true, exeDir: true}
 
-  # - !writeStatus: {status: 'Cleaning up'}
-  # - !powerShell: {command: '.\CLEANUP.ps1', exeDir: true, wait: true}
+  - !writeStatus: {status: 'Cleaning up'}
+  - !powerShell: {command: '.\CLEANUP.ps1', exeDir: true, wait: true}
