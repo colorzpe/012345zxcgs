@@ -573,7 +573,7 @@ actions:
   - !writeStatus: {status: 'Applying tweaks'}
 
   #bcd
-  - !run: {exe: 'bcdedit', args: '/set {current} description "vain"'}
+  # - !run: {exe: 'bcdedit', args: '/set {current} description "vain"'}
   - !run: {exe: 'bcdedit', args: '/set bootmenupolicy Legacy'}
   - !run: {exe: 'bcdedit', args: '/set disabledynamictick yes'}
   - !run: {exe: 'bcdedit', args: '/deletevalue useplatformclock'}
@@ -1319,7 +1319,7 @@ actions:
   - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize', value: 'EnableTransparency', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKCU\Control Panel\Desktop', value: 'ForegroundLockTimeout', type: REG_DWORD, data: '0'}
 #Setting
-  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer', value: 'SettingsPageVisibility', type: REG_SZ, data: 'hide:home;windowsupdate;privacy-automaticfiledownloads;privacy-feedback;windowsinsider;deviceusage;maps;otherusers;findmydevice;windowsdefender;quiethours;powersleep;batterysaver;batterysaver-settings;storagesense;storagepolicies;savelocations;project;crossdevice;mobile-devices;network-dialup;videoplayback;privacy-speech;privacy-activityhistory;recovery;troubleshoot;privacy-general;pen'} 
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer', value: 'SettingsPageVisibility', type: REG_SZ, data: 'hide:home;windowsupdate;privacy-automaticfiledownloads;privacy-feedback;windowsinsider;deviceusage;maps;otherusers;findmydevice;windowsdefender;quiethours;powersleep;batterysaver;batterysaver-settings;storagesense;storagepolicies;savelocations;project;crossdevice;mobile-devices;network-dialup;videoplayback;privacy-speech;privacy-activityhistory;recovery;privacy-general;pen'} 
 #Setting
   - !taskKill: {name: 'explorer'}
   - !run: {exe: 'explorer.exe', runas: 'currentUser', wait: false}
