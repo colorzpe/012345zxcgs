@@ -57,6 +57,38 @@
 0.0.0.0 *.dl.delivery.mp.microsoft.com
 0.0.0.0 https://msedge.api.cdp.microsoft.com/
 
+0.0.0.0 hmma.baidu.com
+0.0.0.0 ad.ldplayer.net
+0.0.0.0 apiid.ldmnq.com
+0.0.0.0 apien.ldmnq.com
+0.0.0.0 ldcdn.ldmnq.com
+0.0.0.0 en.ldplayer.net
+0.0.0.0 encdn.ldmnq.com
+0.0.0.0 api.ld-space.com
+0.0.0.0 openrcv.baidu.com
+0.0.0.0 storeen.ldmnq.com
+0.0.0.0 usersdk.ldmnq.com
+0.0.0.0 appstore.ldmnq.com
+0.0.0.0 encdn.ldplayer.com
+0.0.0.0 adabdapi.ldmnq.com
+0.0.0.0 graph.facebook.com
+0.0.0.0 android.bugly.qq.com
+0.0.0.0 middledata.ldmnq.com
+0.0.0.0 advertise.ldplayer.net
+0.0.0.0 middledata.ldplayer.net
+0.0.0.0 dldgmpfyeblzc.cloudfront.net
+0.0.0.0 dn2sifz9m7tkk.cloudfront.net
+0.0.0.0 de2pmm85odupd.cloudfront.net
+0.0.0.0 dkf29paj6y8sk.cloudfront.net
+0.0.0.0 d19przo9d3f9zk.cloudfront.net
+0.0.0.0 d330if318qxsm2.cloudfront.net
+0.0.0.0 d3p6x1jquzbe0c.cloudfront.net
+0.0.0.0 encdn.ldmnq.com.w.alikunlun.com
+0.0.0.0 ins-o9iydzqn.ias.tencent-cloud.net
+0.0.0.0 lden.oss-ap-southeast-1.aliyuncs.com
+0.0.0.0 netease-publish-gdlgphs.w.alikunlun.com
+0.0.0.0 advertise.ldplayer.net.a.lahuashanbx.com
+
 #New Ver 26.5
 0.0.0.0 adobe.io
 0.0.0.0 v62vpzg2av.adobestats.io
