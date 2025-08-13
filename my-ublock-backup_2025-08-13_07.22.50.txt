@@ -1,0 +1,48 @@
+{
+  "timeStamp": 1755044570340,
+  "version": "1.65.1b3",
+  "userSettings": {
+    "externalLists": "https://raw.githubusercontent.com/PhyschicWinter9/thai-adblock-list/main/thai-adblock-list.txt",
+    "importedLists": [
+      "https://raw.githubusercontent.com/PhyschicWinter9/thai-adblock-list/main/thai-adblock-list.txt"
+    ]
+  },
+  "selectedFilterLists": [
+    "user-filters",
+    "ublock-filters",
+    "ublock-badware",
+    "ublock-privacy",
+    "ublock-quick-fixes",
+    "ublock-unbreak",
+    "easylist",
+    "easyprivacy",
+    "adguard-spyware-url",
+    "urlhaus-1",
+    "plowe-0",
+    "fanboy-cookiemonster",
+    "ublock-cookies-easylist",
+    "easylist-chat",
+    "easylist-newsletters",
+    "easylist-notifications",
+    "easylist-annoyances",
+    "ublock-annoyances",
+    "THA-0",
+    "https://raw.githubusercontent.com/PhyschicWinter9/thai-adblock-list/main/thai-adblock-list.txt"
+  ],
+  "hiddenSettings": {},
+  "whitelist": [
+    "app.mediafire.com",
+    "chrome-extension-scheme",
+    "linkvertise.com",
+    "moz-extension-scheme",
+    "platinmods.com",
+    "razerid.razer.com",
+    "wordpress.com",
+    "www.ankerthailand.co.th",
+    "www.soccersuck.com"
+  ],
+  "dynamicFilteringString": "behind-the-scene * * noop\nbehind-the-scene * inline-script noop\nbehind-the-scene * 1p-script noop\nbehind-the-scene * 3p-script noop\nbehind-the-scene * 3p-frame noop\nbehind-the-scene * image noop\nbehind-the-scene * 3p noop",
+  "urlFilteringString": "",
+  "hostnameSwitchesString": "no-large-media: behind-the-scene false",
+  "userFilters": "! Jul 19, 2024 https://www.037hdmovie.com\n||www.037hdmovie.com/wp-content/uploads/2024/07/Thunder95-01.gif$image\n\n! Aug 13, 2025 https://subserieshd.com\nsubserieshd.com###banner\n||subserieshd.com/banner/21112023151019.png$image\n||subserieshd.com/images/close.gif$image\n||subserieshd.com/images/close.gif$image\nhttps://googles.video/c2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1l/panama888.mp4\nhttps://anccplayer.cyou/source/supreme.mp4\nhttps://anccplayer.cyou/source/weplay.mp4\n\n! Aug 13, 2025 https://www.123hdtv.com\nwww.123hdtv.com##p:nth-of-type(10)\nwww.123hdtv.com##p:nth-of-type(9)\nwww.123hdtv.com##p:nth-of-type(8)\nwww.123hdtv.com##p:nth-of-type(5)\nwww.123hdtv.com##p:nth-of-type(4)\nwww.123hdtv.com##p:nth-of-type(3)\nwww.123hdtv.com##p:nth-of-type(2)\n||www.123hdtv.com/wp-content/uploads/2025/06/728x200-lalikabet66-17668.gif$image\n\n! Aug 13, 2025 https://www.nung2-hd.com\n||image.cdend.com/wp-content/uploads/2024/03/728x200-ufafat.gif$image\n||image.cdend.com/wp-content/uploads/2024/03/728x200-Hydra888.gif$image\n||www.nung2-hd.com/wp-content/uploads/2025/07/ufathai24-728x180-2.gif$image\n||www.nung2-hd.com/wp-content/uploads/2025/07/QUEEN-728x180-1.gif$image\n\n! Aug 13, 2025 https://www.nunghd4k.com\n||www.nunghd4k.com/wp-content/uploads/2024/04/A1.jpg$image\n||www.nunghd4k.com/wp-content/uploads/2024/04/B2.jpg$image\n||www.nunghd4k.com/wp-content/uploads/2024/04/A1.jpg$image\n||www.nunghd4k.com/wp-content/uploads/2024/04/B1.jpg$image\n||www.nunghd4k.com/wp-content/uploads/2024/04/B1.jpg$image"
+}
