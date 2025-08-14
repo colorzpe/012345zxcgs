@@ -608,9 +608,9 @@ actions:
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Power', value: 'HiberbootEnabled', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Power', value: 'CoalescingFlushInterval', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Power', value: 'CoalescingTimerInterval', type: REG_DWORD, data: '0'}
-  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Power', value: 'MSDisabled', type: REG_DWORD, data: '1'}
+  # - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Power', value: 'MSDisabled', type: REG_DWORD, data: '1'}
   # - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Power', value: 'IdleProcessorsRequireQosManagement', type: REG_DWORD, data: '0'}
-  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Power', value: 'DisableInboxPepGeneratedConstraints', type: REG_DWORD, data: '1'}
+  # - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Power', value: 'DisableInboxPepGeneratedConstraints', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Power', value: 'IgnoreCsComplianceCheck', type: REG_DWORD, data: '1'}
   # - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\stornvme\Parameters\Device', value: 'IdlePowerMode', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\stornvme\Parameters\Device', value: 'DisableDSTThrottle', type: REG_DWORD, data: '1'}
