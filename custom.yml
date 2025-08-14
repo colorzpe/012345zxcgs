@@ -609,13 +609,13 @@ actions:
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Power', value: 'CoalescingFlushInterval', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Power', value: 'CoalescingTimerInterval', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Power', value: 'MSDisabled', type: REG_DWORD, data: '1'}
-  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Power', value: 'IdleProcessorsRequireQosManagement', type: REG_DWORD, data: '0'}
+  # - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Power', value: 'IdleProcessorsRequireQosManagement', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Power', value: 'DisableInboxPepGeneratedConstraints', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Power', value: 'IgnoreCsComplianceCheck', type: REG_DWORD, data: '1'}
-  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\stornvme\Parameters\Device', value: 'IdlePowerMode', type: REG_DWORD, data: '0'}
+  # - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\stornvme\Parameters\Device', value: 'IdlePowerMode', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\stornvme\Parameters\Device', value: 'DisableDSTThrottle', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Storage', value: 'StorageD3InModernStandby', type: REG_DWORD, data: '0'}
-  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling', value: 'PowerThrottlingOff', type: REG_DWORD, data: '1'}
+  # - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling', value: 'PowerThrottlingOff', type: REG_DWORD, data: '1'}
 
 #session manager
   # - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel', value: 'DisableExceptionChainValidation', type: REG_DWORD, data: '1'}
@@ -640,7 +640,7 @@ actions:
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power', value: 'WatchdogResumeTimeout', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power', value: 'WatchdogSleepTimeout', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power', value: 'Win32CalloutWatchdogBugcheckEnabled', type: REG_DWORD, data: '0'}
-  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power', value: 'IdleScanInterval', type: REG_DWORD, data: '0'}
+  # - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power', value: 'IdleScanInterval', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\I/O System', value: 'DisableDiskCounters', type: REG_DWORD, data: '1'}
   - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\I/O System', value: 'IoAllowLoadCrashDumpDriver', type: REG_DWORD, data: '0'}
 
@@ -837,7 +837,7 @@ actions:
 
 #disablestorportidle
   - !cmd:
-    command: 'for /f "tokens=*" %s in (''reg query "HKLM\SYSTEM\CurrentControlSet\Enum" /s /f "StorPort" ^| findstr /e "StorPort" '') do Reg.exe add "%s" /v "EnableIdlePowerManagement" /t REG_DWORD /d "0" /f'
+    command: 'for /f "tokens=*" %s in (''reg query "HKLM\SYSTEM\CurrentControlSet\Enum" /s /f "StorPort" ^| findstr /e "StorPort" '') do Reg.exe add "%s" /v "EnableIdlePowerManagement" /t REG_DWORD /d "1" /f'
     exeDir: true
     wait: true
     runas: currentUserElevated
@@ -1319,7 +1319,7 @@ actions:
   - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize', value: 'EnableTransparency', type: REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKCU\Control Panel\Desktop', value: 'ForegroundLockTimeout', type: REG_DWORD, data: '0'}
 #Setting
-  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer', value: 'SettingsPageVisibility', type: REG_SZ, data: 'hide:home;windowsupdate;privacy-automaticfiledownloads;privacy-feedback;windowsinsider;deviceusage;maps;otherusers;findmydevice;windowsdefender;quiethours;powersleep;batterysaver;batterysaver-settings;storagesense;storagepolicies;savelocations;project;crossdevice;mobile-devices;network-dialup;videoplayback;privacy-speech;privacy-activityhistory;recovery;privacy-general;pen'} 
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer', value: 'SettingsPageVisibility', type: REG_SZ, data: 'hide:home;windowsupdate;privacy-automaticfiledownloads;privacy-feedback;windowsinsider;deviceusage;maps;otherusers;findmydevice;windowsdefender;quiethours;powersleep;batterysaver;batterysaver-settings;storagesense;storagepolicies;savelocations;project;crossdevice;mobile-devices;network-dialup;videoplayback;privacy-speech;privacy-activityhistory;privacy-general;pen'} 
 #Setting
   - !taskKill: {name: 'explorer'}
   - !run: {exe: 'explorer.exe', runas: 'currentUser', wait: false}
