@@ -39,3 +39,5 @@ https://xn--2-wxfax2bxc9bzguc.com/ex/sa168.mp4
 ||sexygame66.mp4$media
 ||CATCAT.mp4$media
 ||HUAY88.mp4$media
+
+/.*(lotto432|sagame66|ufathai24|panama888|sa168|ufanance|lalikabet168|lockdown168|sexygame66|HUAY88).*\.mp4$/$media,xmlhttprequest
