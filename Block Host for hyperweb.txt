@@ -28,6 +28,7 @@ https://flswa.watermelogic.com/assets/red789.mp4
 https://flswa.watermelogic.com/assets/macau432.mp4
 https://shocking-kaltenegger.s3.eu-west-par.io.cloud.ovh.net/uploads/we356.mp4
 https://srv.greatestglasses.com/uploads/we356.mp4
+https://onlysubthai.com/video/we356.mp4
 https://shocking-kaltenegger.s3.eu-west-par.io.cloud.ovh.net/uploads/CATCAT.mp4
 https://srv.greatestglasses.com/uploads/CATCAT.mp4
 https://srv.greatestglasses.com/uploads/thunder87-1.mp4
@@ -35,6 +36,11 @@ https://shocking-kaltenegger.s3.eu-west-par.io.cloud.ovh.net/uploads/thunder87-1
 https://srv.greatestglasses.com/uploads/thunder87-1.mp4
 https://shocking-kaltenegger.s3.eu-west-par.io.cloud.ovh.net/uploads/me356.mp4
 https://srv.greatestglasses.com/uploads/me356.mp4
+https://allmp4.pro/assets/PGK44.mp4
+https://onlysubthai.com/video/ufa11k.mp4
+https://onlysubthai.com/video/ufa11k.mp4
+https://googles.video/c2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1l/hydra888.mp4
+https://googles.video/c2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1l/ufazeed.mp4
 
 ||lotto432.mp4$media
 ||lotto432.mp4$media
@@ -61,5 +67,8 @@ https://srv.greatestglasses.com/uploads/me356.mp4
 ||we356.mp4$media
 ||CATCAT.mp4$media
 ||thunder87-1.mp4$media
+||ufazeed.mp4$media
+||hydra888.mp4$media
+||ufa11k.mp4$media
 
-/.*(lotto432|sagame66|ufathai24|panama888|panama888-240822_720|sa168|ufanance|ufanance-240822_720|lalikabet168|lalikabet168-240822_720|lockdown168|sexygame66|macau432|red789|HUAY88|me356|we356|CATCAT|thunder87-1|thunder87).*\.mp4$/$media,xmlhttprequest
+/.*(lotto432|sagame66|ufathai24|panama888|panama888-240822_720|sa168|ufanance|ufanance-240822_720|lalikabet168|lalikabet168-240822_720|lockdown168|sexygame66|macau432|red789|HUAY88|me356|we356|CATCAT|thunder87-1|thunder87|ufazeed|hydra888|ufa11k).*\.mp4$/$media,xmlhttprequest
