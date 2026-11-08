@@ -1,3 +1,55 @@
+! =====================================================================
+! Facebook — Suggested and recommended feed content
+! =====================================================================
+
+! uBlock Origin’s Annoyances lists may already remove Suggested posts.
+! Enable the rules below only when those posts remain visible.
+
+! Hide posts explicitly labelled “Suggested for you”.
+www.facebook.com##:is([aria-posinset],[aria-describedby]:not([aria-posinset])) div:not(:only-child)>div:only-child>div:only-child>div:first-child[class=""]>div:not([data-0]):has-text(/^Suggested/):upward([aria-posinset],[aria-describedby]:not([aria-posinset])):style(height: 0 !important; overflow: hidden !important;)
+
+! Hide unlabelled Suggested posts containing a Follow or Join button.
+www.facebook.com##:is([aria-posinset],[aria-describedby]:not([aria-posinset])) :is(h3,h4) [role=button]:has-text(/Follow|Join/):upward([aria-posinset],[aria-describedby]:not([aria-posinset])):style(height: 0 !important; overflow: hidden !important;)
+
+! Hide Suggested posts when the label appears beside the post date.
+! Enable only if Facebook uses this layout for your account.
+www.facebook.com##:is([aria-posinset],[aria-describedby]:not([aria-posinset])):has-text(Suggested for you):style(height: 0 !important; overflow: hidden !important;)
+
+
+! =====================================================================
+! Facebook — Recommended feed sections
+! =====================================================================
+
+! Hide “People You May Know” sections.
+www.facebook.com##:is([aria-posinset],[aria-describedby]:not([aria-posinset])):has([href="/friends/"]):style(height: 0 !important; overflow: hidden !important;)
+
+! Hide Suggested Groups sections.
+www.facebook.com##:is([aria-posinset],[aria-describedby]:not([aria-posinset])):has([href="/groups/discover/"]):style(height: 0 !important; overflow: hidden !important;)
+
+! Hide Reels and Short Videos sections in the English interface.
+www.facebook.com##:is([aria-posinset],[aria-describedby]:not([aria-posinset])):has([aria-label="Reels"]):style(height: 0 !important; overflow: hidden !important;)
+
+! Hide Suggested Pages sections.
+www.facebook.com##:is([aria-posinset],[aria-describedby]:not([aria-posinset])):has([aria-label="Suggested pages"]):style(height: 0 !important; overflow: hidden !important;)
+
+
+! =====================================================================
+! Facebook — Sponsored content and advertisements
+! =====================================================================
+
+! Hide advertisements shown inside Marketplace.
+facebook.com##[aria-label*="Marketplace"] object > a[href^="/ads/"] > span:not(:empty):upward(11)
+
+! Hide feed advertisements whose obfuscated label contains separate
+! one-character spans for the letters “A” and “d”, regardless of order.
+facebook.com##div[aria-posinset]:has(span:has(> span:matches-css(position: relative):has-text(/^A$/)):has(> span:matches-css(position: relative):has-text(/^d$/)):not(:has(> span:not(:has-text(/^.$/)))))
+
+! Hide feed advertisements whose obfuscated label contains the letters
+! used by “Sponsored” as separate one-character spans, regardless of order.
+facebook.com##div[aria-posinset]:has(span:has(> span:matches-css(position: relative):has-text(/^S$/)):has(> span:matches-css(position: relative):has-text(/^p$/)):has(> span:matches-css(position: relative):has-text(/^o$/)):has(> span:matches-css(position: relative):has-text(/^n$/)):has(> span:matches-css(position: relative):has-text(/^s$/)):has(> span:matches-css(position: relative):has-text(/^r$/)):has(> span:matches-css(position: relative):has-text(/^e$/)):has(> span:matches-css(position: relative):has-text(/^d$/)):not(:has(> span:not(:has-text(/^.$/)))))
+
+
+
 https://googles.video/c2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1l/panama888.mp4
 https://anccplayer.cyou/source/supreme.mp4
 https://anccplayer.cyou/source/weplay.mp4
