@@ -1,3 +1,83 @@
+! =====================================================================
+! Facebook — Suggested and recommended feed content
+! =====================================================================
+
+! uBlock Origin’s Annoyances lists may already remove Suggested posts.
+! Enable the rules below only when those posts remain visible.
+
+! Hide posts explicitly labelled “Suggested for you”.
+www.facebook.com##:is([aria-posinset],[aria-describedby]:not([aria-posinset])) div:not(:only-child)>div:only-child>div:only-child>div:first-child[class=""]>div:not([data-0]):has-text(/^Suggested/):upward([aria-posinset],[aria-describedby]:not([aria-posinset])):style(height: 0 !important; overflow: hidden !important;)
+
+! Hide unlabelled Suggested posts containing a Follow or Join button.
+www.facebook.com##:is([aria-posinset],[aria-describedby]:not([aria-posinset])) :is(h3,h4) [role=button]:has-text(/Follow|Join/):upward([aria-posinset],[aria-describedby]:not([aria-posinset])):style(height: 0 !important; overflow: hidden !important;)
+
+! Hide Suggested posts when the label appears beside the post date.
+! Enable only if Facebook uses this layout for your account.
+www.facebook.com##:is([aria-posinset],[aria-describedby]:not([aria-posinset])):has-text(Suggested for you):style(height: 0 !important; overflow: hidden !important;)
+
+
+! =====================================================================
+! Facebook — Recommended feed sections
+! =====================================================================
+
+! Hide “People You May Know” sections.
+www.facebook.com##:is([aria-posinset],[aria-describedby]:not([aria-posinset])):has([href="/friends/"]):style(height: 0 !important; overflow: hidden !important;)
+
+! Hide Suggested Groups sections.
+www.facebook.com##:is([aria-posinset],[aria-describedby]:not([aria-posinset])):has([href="/groups/discover/"]):style(height: 0 !important; overflow: hidden !important;)
+
+! Hide Reels and Short Videos sections in the English interface.
+www.facebook.com##:is([aria-posinset],[aria-describedby]:not([aria-posinset])):has([aria-label="Reels"]):style(height: 0 !important; overflow: hidden !important;)
+
+! Hide Suggested Pages sections.
+www.facebook.com##:is([aria-posinset],[aria-describedby]:not([aria-posinset])):has([aria-label="Suggested pages"]):style(height: 0 !important; overflow: hidden !important;)
+
+
+! =====================================================================
+! Facebook — Sponsored content and advertisements
+! =====================================================================
+
+! Hide advertisements shown inside Marketplace.
+facebook.com##[aria-label*="Marketplace"] object > a[href^="/ads/"] > span:not(:empty):upward(11)
+
+! Hide feed advertisements whose obfuscated label contains separate
+! one-character spans for the letters “A” and “d”, regardless of order.
+facebook.com##div[aria-posinset]:has(span:has(> span:matches-css(position: relative):has-text(/^A$/)):has(> span:matches-css(position: relative):has-text(/^d$/)):not(:has(> span:not(:has-text(/^.$/)))))
+
+! Hide feed advertisements whose obfuscated label contains the letters
+! used by “Sponsored” as separate one-character spans, regardless of order.
+facebook.com##div[aria-posinset]:has(span:has(> span:matches-css(position: relative):has-text(/^S$/)):has(> span:matches-css(position: relative):has-text(/^p$/)):has(> span:matches-css(position: relative):has-text(/^o$/)):has(> span:matches-css(position: relative):has-text(/^n$/)):has(> span:matches-css(position: relative):has-text(/^s$/)):has(> span:matches-css(position: relative):has-text(/^r$/)):has(> span:matches-css(position: relative):has-text(/^e$/)):has(> span:matches-css(position: relative):has-text(/^d$/)):not(:has(> span:not(:has-text(/^.$/)))))
+
+! Facebook - ซ่อนโพสต์ Sponsored / Suggested / Reels / People you may know
+! ใช้ได้กับ desktop (www.facebook.com)
+
+! --- โพสต์ Sponsored (ตรวจจากลิงก์ ads) ---
+facebook.com##div[role="article"]:has(a[href*="/ads/about"])
+facebook.com##div[role="article"]:has(a[href*="ad_id="])
+facebook.com##div[role="article"]:has(a[aria-label="Sponsored"])
+facebook.com##div[role="article"]:has(span[aria-label="Sponsored"])
+
+! --- Suggested for you / Follow ---
+facebook.com##div[role="article"]:has(span:has-text(/^Suggested for you$/))
+facebook.com##div[role="article"]:has(span:has-text(/^แนะนำสำหรับคุณ$/))
+facebook.com##div[role="article"]:has(div[role="button"]:has-text(/^Follow$/))
+facebook.com##div[role="article"]:has(div[role="button"]:has-text(/^ติดตาม$/))
+
+! --- Sponsored ภาษาไทย ---
+facebook.com##div[role="article"]:has(span:has-text(/^ได้รับการสนับสนุน$/))
+
+! --- Reels / People you may know / Groups you may like ---
+facebook.com##div[role="article"]:has(span:has-text(/^Reels and short videos$/))
+facebook.com##div[role="article"]:has(span:has-text(/^People you may know$/))
+facebook.com##div[role="article"]:has(span:has-text(/^คนที่คุณอาจรู้จัก$/))
+facebook.com##div[role="article"]:has(span:has-text(/^Groups you may like$/))
+
+! --- โฆษณาแถบขวา ---
+facebook.com##div[data-pagelet="RightRail"] div:has(> div > span:has-text(/^Sponsored$/))
+facebook.com##[data-pagelet="RightRail"]
+
+
+
 https://googles.video/c2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1l/panama888.mp4
 https://anccplayer.cyou/source/supreme.mp4
 https://anccplayer.cyou/source/weplay.mp4
@@ -26,6 +106,33 @@ https://xn--2-wxfax2bxc9bzguc.com/ex/lotto432.mp4
 https://xn--2-wxfax2bxc9bzguc.com/ex/sa168.mp4
 https://flswa.watermelogic.com/assets/red789.mp4
 https://flswa.watermelogic.com/assets/macau432.mp4
+https://shocking-kaltenegger.s3.eu-west-par.io.cloud.ovh.net/uploads/we356.mp4
+https://srv.greatestglasses.com/uploads/we356.mp4
+https://onlysubthai.com/video/we356.mp4
+https://shocking-kaltenegger.s3.eu-west-par.io.cloud.ovh.net/uploads/CATCAT.mp4
+https://srv.greatestglasses.com/uploads/CATCAT.mp4
+https://srv.greatestglasses.com/uploads/thunder87-1.mp4
+https://shocking-kaltenegger.s3.eu-west-par.io.cloud.ovh.net/uploads/thunder87-1.mp4
+https://srv.greatestglasses.com/uploads/thunder87-1.mp4
+https://shocking-kaltenegger.s3.eu-west-par.io.cloud.ovh.net/uploads/me356.mp4
+https://srv.greatestglasses.com/uploads/me356.mp4
+https://allmp4.pro/assets/PGK44.mp4
+https://onlysubthai.com/video/ufa11k.mp4
+https://onlysubthai.com/video/ufa11k.mp4
+https://onlysubthai.com/video/ufa88club.mp4
+https://av-kuy.com/uploads/ufa11k-2.mp4
+https://googles.video/c2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1l/hydra888.mp4
+https://googles.video/c2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1l/ufazeed.mp4
+https://googles.video/c2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1l/ufanance.mp4
+https://googles.video/c2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1l/ufagool.mp4
+https://googles.video/c2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1l/lotto432.mp4
+https://googles.video/c2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1l/juad88.mp4
+https://1av-jav.com/Pgw44w.mp4
+https://1av-jav.com/Maruay888w.mp4
+https://1av-jav.com/Lotto432w.mp4
+https://1av-jav.com/Ufafat_w.mp4
+https://1av-jav.com/Sexy365w.mp4
+https://1av-jav.com/Pgw44w.mp4
 
 ||lotto432.mp4$media
 ||lotto432.mp4$media
@@ -48,5 +155,12 @@ https://flswa.watermelogic.com/assets/macau432.mp4
 ||HUAY88.mp4$media
 ||red789.mp4$media
 ||macau432.mp4$media
+||me356.mp4$media
+||we356.mp4$media
+||CATCAT.mp4$media
+||thunder87-1.mp4$media
+||ufazeed.mp4$media
+||hydra888.mp4$media
+||ufa11k.mp4$media
 
-/.*(lotto432|sagame66|ufathai24|panama888|panama888-240822_720|sa168|ufanance|ufanance-240822_720|lalikabet168|lalikabet168-240822_720|lockdown168|sexygame66|macau432|red789|HUAY88).*\.mp4$/$media,xmlhttprequest
+/.*(lotto432|sagame66|ufathai24|panama888|panama888-240822_720|sa168|ufanance|ufanance-240822_720|lalikabet168|lalikabet168-240822_720|lockdown168|sexygame66|macau432|red789|HUAY88|me356|we356|CATCAT|thunder87-1|thunder87|ufazeed|hydra888|ufa11k).*\.mp4$/$media,xmlhttprequest
