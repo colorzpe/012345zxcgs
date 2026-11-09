@@ -48,6 +48,34 @@ facebook.com##div[aria-posinset]:has(span:has(> span:matches-css(position: relat
 ! used by “Sponsored” as separate one-character spans, regardless of order.
 facebook.com##div[aria-posinset]:has(span:has(> span:matches-css(position: relative):has-text(/^S$/)):has(> span:matches-css(position: relative):has-text(/^p$/)):has(> span:matches-css(position: relative):has-text(/^o$/)):has(> span:matches-css(position: relative):has-text(/^n$/)):has(> span:matches-css(position: relative):has-text(/^s$/)):has(> span:matches-css(position: relative):has-text(/^r$/)):has(> span:matches-css(position: relative):has-text(/^e$/)):has(> span:matches-css(position: relative):has-text(/^d$/)):not(:has(> span:not(:has-text(/^.$/)))))
 
+! Facebook - ซ่อนโพสต์ Sponsored / Suggested / Reels / People you may know
+! ใช้ได้กับ desktop (www.facebook.com)
+
+! --- โพสต์ Sponsored (ตรวจจากลิงก์ ads) ---
+facebook.com##div[role="article"]:has(a[href*="/ads/about"])
+facebook.com##div[role="article"]:has(a[href*="ad_id="])
+facebook.com##div[role="article"]:has(a[aria-label="Sponsored"])
+facebook.com##div[role="article"]:has(span[aria-label="Sponsored"])
+
+! --- Suggested for you / Follow ---
+facebook.com##div[role="article"]:has(span:has-text(/^Suggested for you$/))
+facebook.com##div[role="article"]:has(span:has-text(/^แนะนำสำหรับคุณ$/))
+facebook.com##div[role="article"]:has(div[role="button"]:has-text(/^Follow$/))
+facebook.com##div[role="article"]:has(div[role="button"]:has-text(/^ติดตาม$/))
+
+! --- Sponsored ภาษาไทย ---
+facebook.com##div[role="article"]:has(span:has-text(/^ได้รับการสนับสนุน$/))
+
+! --- Reels / People you may know / Groups you may like ---
+facebook.com##div[role="article"]:has(span:has-text(/^Reels and short videos$/))
+facebook.com##div[role="article"]:has(span:has-text(/^People you may know$/))
+facebook.com##div[role="article"]:has(span:has-text(/^คนที่คุณอาจรู้จัก$/))
+facebook.com##div[role="article"]:has(span:has-text(/^Groups you may like$/))
+
+! --- โฆษณาแถบขวา ---
+facebook.com##div[data-pagelet="RightRail"] div:has(> div > span:has-text(/^Sponsored$/))
+facebook.com##[data-pagelet="RightRail"]
+
 
 
 https://googles.video/c2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1lc2FnYW1l/panama888.mp4
